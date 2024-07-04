@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Blog</title>
+  </head>
+  <body>
+    <main>
+      <div class="header">
+        <h2>Rakesh blogs</h2>
+        <span><i class="fa-solid fa-plus" id="data"></i></span>
+      </div>
+
+
+
+      <!-- ==================================================================================== -->
+       <div class="boxmen">
+      <div class="box">
+        <div>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/76/Physics_wallah_logo.jpg"
+            alt=""
+            style="height: 200px; width: auto"
+          />
+          
+          <p class="add">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. At, cupiditate.
+          </p>
+          <button>read more</button>
+        </div>
+      </div>
+      <div class="add_data">
+
+      </div>
+
+    </div>
+      
+
+      <div class="form">
+        <div class="form_data">
+          <h1>Create a new Blog</h1>
+          <label>Title</label>
+          <input type="text" class="text" placeholder="Enter title" style="width: 320px; height: 30px;" required /> 
+          <label>Img</label>
+          <input
+            type="url"
+            class="img"
+            placeholder="Enter url"
+            height="20px"
+            style="width: 320px; height: 30px; "
+            required
+          />
+          <label>Dscription</label>
+          <textarea style="width: 320px; height: 120px;" class="textarea" ></textarea>
+          <button onclick="submit()" class="sub" style="padding: 3px; margin: 5px; background-color: rgb(109, 159, 203);">POST</button>
+        </div>
+      </div>
+
+      <script>
+        
+        let data = document.querySelector("#data");
+        let boxdata=document.querySelector('.boxdata')
+
+        data.addEventListener("click", hello);
+
+        function hello() {
+          let display = document.querySelector(".form");
+          display.style.display = "block";
+          document.body.appendChild(display);
+        }
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        function submit() {
+          let display = document.querySelector(".form");
+          display.style.display = "none";
+          document.body.appendChild(display);
+        }
+        let sub = document.querySelector(".sub");
+
+        sub.addEventListener("click", hello1);
+
+        function hello1() {
+         
+          
+          let text = document.querySelector(".text").value;
+          let img = document.querySelector(".img").value;
+          console.log(text);
+          console.log(img);
+          
+
+          const box = document.createElement('div');
+          box.classList.add('blog');
+          
+          
+          box.style.margin = "1%";
+          box.style.height = "300px";
+          box.style.width = "250px";
+          box.style.border = "1px solid red";
+          box.style.boxShadow = "0px 0px 10px 10px";
+          box.style.backgroundColor = "white";
+          box.style.overflow='hidden';
+          box.style.margin='3%';
+          
+          
+    
+          
+// create the blog post image
+            const blogImg=document.createElement('img');
+            blogImg.src=`${img}`;
+            blogImg.style.width='250px';
+            blogImg.style.height='200px'
+            box.appendChild(blogImg);
+
+ // Create elements for the blog post content
+            const blogTitle = document.createElement('p');
+            blogTitle.textContent = `Post by: ${text}`;
+            blogTitle.style.textAlign='center'
+            blogTitle.style.fontSize='10px'
+            box.appendChild(blogTitle);
+
+  // create button 
+
+            const blogbutton=document.createElement('button');
+            blogbutton.style.width='100px';
+            blogbutton.style.height='40px'
+            blogbutton.style.margin='10%';
+            blogbutton.style.borderRadius='10px';
+            blogbutton.style.backgroundColor='beige';
+            blogbutton.style.border='none'
+            blogbutton.style.left='50px'
+            blogbutton.style.position='relative'
+            blogbutton.innerHTML='read more'
+            blogbutton.className='description'
+            box.appendChild(blogbutton);
+
+            
+            document.body.appendChild(box);
+
+
+
+            let d=document.querySelector('.description');
+          d.addEventListener('click',add)
+          function add(){
+            let description=document.querySelector(".textarea").value;
+
+            descriptionData=document.createElement('div');
+            descriptionData.className='DataDetails';
+            descriptionData.style.border='2px solid red';
+            descriptionData.style.height='200px';
+            descriptionData.style.width='200px';
+            descriptionData.style.display='reletive'
+            descriptionData.style.transform='translate(550px)';
+
+            descriptionData.innerHTML=`${description}`
+            document.body.appendChild(descriptionData);
+            console.log(descriptionData);
+          }
+          }
+         
+          
+      </script>
+    </main>
+  </body>
+</html>
